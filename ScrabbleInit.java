@@ -6,18 +6,26 @@ public class ScrabbleInit {
 		
 		String largestWord;
 		int maxScore;
-		char[] letters = {'A','b','e','c'};
+		static char[] letters = {'A','b'};
 		int[] scores = {4,2,6,1};
 		static ArrayList<String> poss = new ArrayList<String>();;
 		
 		public void checkMax(String checkString){
 
 			int newWordScore = 0;
-
+			
+			int index = -1;
+			
 			for(int i=0; i<checkString.length(); i++){
 			char alphabet = checkString.charAt(i);
+			for (int j = 0; j < letters.length; i++) {
+				  if (letters[j] == alphabet) {
+				    index = j;
+				    break;
+				  }
+				}
 			{
-			newWordScore += scores[letters.indexOf(alphabet)];
+			newWordScore += scores[index];
 			}
 			if(newWordScore > maxScore)
 			{
@@ -27,8 +35,8 @@ public class ScrabbleInit {
 			}
 		}
 
-	public static ArrayList<String> permutation(String str) { 
-	    poss = permutation("", str); 
+	public static void permutation(String str) { 
+	    permutation("", str); 
 	    
 	}
 
@@ -41,6 +49,7 @@ public class ScrabbleInit {
 	            permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
 	    }
 	}
+	/*
 	public static String[] readFile(String filename,int size)
 	{
 		File file = new File(filename);
@@ -63,7 +72,7 @@ public class ScrabbleInit {
 	
 	public static boolean searchWord(String[] words,String value)
 	{
-		  if(binarySearch(words,"helo")>=0)
+		  if(binarySearch(words,value)>=0)
 	        {
 	        return true;
 	        }
@@ -93,11 +102,15 @@ public class ScrabbleInit {
             return binarySearch(words, value, mid + 1, max);
         }
     }
+    */
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		String str = String.valueOf(letters);
+		permutation(str);
+		System.out.println(poss);
+		
 		
 	}
 
